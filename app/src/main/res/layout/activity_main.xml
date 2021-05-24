@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="30dp"
+
+    tools:context=".MainActivity">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="10dp">
+   <com.google.android.material.card.MaterialCardView
+       android:layout_width="130dp"
+       android:layout_height="150dp"
+       android:layout_margin="10dp"
+       android:elevation="10dp"
+
+       android:id="@+id/UploadNotice">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:background="@drawable/circle_green"
+               android:src="@drawable/icon_notice"
+               android:padding="15dp"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="10dp"
+               android:background="@color/lightgrey"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Upload Notice"
+               android:textStyle="bold"
+               android:padding="5dp"
+               android:layout_marginTop="10dp"
+               android:textColor="@color/textColor"/>
+
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+ <com.google.android.material.card.MaterialCardView
+       android:layout_width="130dp"
+       android:layout_height="150dp"
+       android:layout_margin="10dp"
+       android:elevation="10dp"
+       android:id="@+id/addGalleryImage">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:background="@drawable/circle_purple"
+               android:src="@drawable/icon_gallery"
+               android:padding="15dp"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="10dp"
+               android:background="@color/lightgrey"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Upload Image"
+               android:textStyle="bold"
+               android:padding="5dp"
+               android:layout_marginTop="10dp"
+               android:textColor="@color/textColor"/>
+
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="10dp">
+   <com.google.android.material.card.MaterialCardView
+       android:layout_width="130dp"
+       android:layout_height="150dp"
+       android:layout_margin="10dp"
+       android:elevation="10dp"
+       android:id="@+id/addEbook">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:background="@drawable/circle_pink"
+               android:src="@drawable/icon_upload"
+               android:padding="15dp"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="10dp"
+               android:background="@color/lightgrey"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Upload Ebook"
+               android:textStyle="bold"
+               android:padding="5dp"
+               android:layout_marginTop="10dp"
+               android:textColor="@color/textColor"/>
+
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+ <com.google.android.material.card.MaterialCardView
+       android:layout_width="130dp"
+       android:layout_height="150dp"
+       android:layout_margin="10dp"
+       android:elevation="10dp"
+       android:id="@+id/addFaculty">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:background="@drawable/circle_yellow"
+               android:src="@drawable/icon_faculty"
+               android:padding="15dp"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="10dp"
+               android:background="@color/lightgrey"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Add Faculty"
+               android:textStyle="bold"
+               android:padding="5dp"
+               android:layout_marginTop="10dp"
+               android:textColor="@color/textColor"/>
+
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_margin="10dp">
+   <com.google.android.material.card.MaterialCardView
+       android:layout_width="130dp"
+       android:layout_height="150dp"
+       android:layout_margin="10dp"
+       android:elevation="10dp"
+       android:id="@+id/deleteNotice">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:gravity="center"
+           android:orientation="vertical">
+
+           <ImageView
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:background="@drawable/circle_red"
+               android:padding="15dp"
+               android:src="@drawable/icon_delete" />
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="10dp"
+               android:background="@color/lightgrey" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:padding="5dp"
+               android:text="Delete Notice"
+               android:textColor="@color/textColor"
+               android:textStyle="bold" />
+
+
+       </LinearLayout>
+   </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
+
+</LinearLayout>

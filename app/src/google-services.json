@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "683578332903",
+    "project_id": "gcet-app",
+    "storage_bucket": "gcet-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683578332903:android:3f9b8d34ce6dd68212f442",
+        "android_client_info": {
+          "package_name": "com.example.adminapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683578332903-3u1g1bidml2ntlj9h3chvbftrq7orm7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6V493uPBMh6ekC_edQLkiWJgXas7yUd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683578332903-3u1g1bidml2ntlj9h3chvbftrq7orm7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

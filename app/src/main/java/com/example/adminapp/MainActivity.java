@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.adminapp.UploadClasses.UploadNotice;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private CardView uploadNotice;
     @Override
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()){
             case R.id.UploadNotice:
-                Intent intent=new Intent(MainActivity.this,UploadNotice.class);
+                Intent intent=new Intent(MainActivity.this, UploadNotice.class);
                 startActivity(intent);
                 break;
 

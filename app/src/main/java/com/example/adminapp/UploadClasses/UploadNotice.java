@@ -1,4 +1,4 @@
-package com.example.adminapp;
+package com.example.adminapp.UploadClasses;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +22,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.adminapp.Models.Notice;
+import com.example.adminapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +44,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class UploadNotice extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,7 +71,8 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     private void firebaseUploads() {
         databaseReference= FirebaseDatabase.getInstance().getReference();
         storageReference= FirebaseStorage.getInstance().getReference();
-
+        storageReference=storageReference.child("Notices");
+        databaseReference=databaseReference.child("Notices");
     }
 
     private void setView() {
@@ -92,9 +97,54 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
                 openGallery();
                 break;
             case R.id.uploadNotice:
-
+                uploadData();
                 break;
         }
+    }
+
+    private void uploadData() {
+        pd.setMessage("Uploading...");
+        pd.show();
+        String key=databaseReference.push().getKey();
+
+        storageReference.child(key).putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                while(!uri.isComplete());
+                Uri url = uri.getResult();
+                String imgUrl=url.toString();
+                uploadToDB(imgUrl,key);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(UploadNotice.this,"Failed!",Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
+    private void uploadToDB(String imgUrl, String key) {
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        Notice notice=new Notice(noticeTitle.getText().toString(),imgUrl,currentDate,currentTime,key);
+        databaseReference.child(key).setValue(notice).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                pd.dismiss();
+                Toast.makeText(UploadNotice.this,"Success!",Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(UploadNotice.this,"Failed!",Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
 

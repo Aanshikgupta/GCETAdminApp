@@ -1,4 +1,4 @@
-package com.example.adminapp;
+package com.example.adminapp.Models;
 
 public class Notice {
     String title,image,date,time,key;

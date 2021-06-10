@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadClasses.UploadNotice">
+    tools:context=".UploadClasses.UploadGalleryImage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 android:elevation="10dp"
-                android:id="@+id/UploadImage">
+                android:id="@+id/selectGalleryImageCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -33,9 +33,9 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/circle_purple"
+                        android:background="@drawable/circle_yellow"
                         android:padding="15dp"
-                        android:src="@drawable/icon_camera_add" />
+                        android:src="@drawable/icon_gallery" />
 
                     <View
                         android:layout_width="match_parent"
@@ -59,25 +59,20 @@
 
         </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
+        <Spinner
+            android:id="@+id/galleryImageSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Title"
-                android:layout_marginTop="10dp"
-                android:id="@+id/noticeTitle"/>
-        </com.google.android.material.card.MaterialCardView>
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:layout_marginTop="10dp"
-       android:textStyle="bold"
-       android:text="Upload"
-       android:id="@+id/uploadNotice"
-       android:textSize="16sp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="Upload"
+            android:id="@+id/uploadGalleryButton"
+            android:textSize="16sp"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -86,7 +81,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/previewImage"
+                android:id="@+id/previewGalleryImage"
                 android:scaleType="centerCrop"/>
         </com.google.android.material.card.MaterialCardView>
 

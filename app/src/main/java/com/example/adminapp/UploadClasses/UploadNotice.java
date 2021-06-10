@@ -103,6 +103,10 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     }
 
     private void uploadData() {
+        if(selectedImageUri==null){
+            Toast.makeText(UploadNotice.this,"Please select an image!",Toast.LENGTH_LONG).show();
+            return;
+        }
         pd.setMessage("Uploading...");
         pd.show();
         String key=databaseReference.push().getKey();
@@ -169,10 +173,9 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
 
     private void openGallery() {
 
-        Intent i = new Intent(Intent.ACTION_PICK);
+        Intent i=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-
         // pass the constant to compare it
         // with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);

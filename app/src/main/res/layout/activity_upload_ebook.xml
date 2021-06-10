@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadClasses.UploadNotice">
+    tools:context=".UploadClasses.UploadEbook">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 android:elevation="10dp"
-                android:id="@+id/UploadImage">
+                android:id="@+id/selectPdfCard">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -33,9 +33,9 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/circle_purple"
+                        android:background="@drawable/circle_pink"
                         android:padding="15dp"
-                        android:src="@drawable/icon_camera_add" />
+                        android:src="@drawable/icon_pdf" />
 
                     <View
                         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:padding="5dp"
-                        android:text="Select Image"
+                        android:text="Select Pdf"
                         android:textColor="@color/textColor"
                         android:textStyle="bold" />
 
@@ -59,6 +59,18 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:id="@+id/pdfName"
+            android:text="PDF NAME"
+            android:textStyle="bold" />
+
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -67,28 +79,22 @@
                 android:layout_height="wrap_content"
                 android:hint="Title"
                 android:layout_marginTop="10dp"
-                android:id="@+id/noticeTitle"/>
+                android:id="@+id/pdfTitle"/>
         </com.google.android.material.card.MaterialCardView>
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:layout_marginTop="10dp"
-       android:textStyle="bold"
-       android:text="Upload"
-       android:id="@+id/uploadNotice"
-       android:textSize="16sp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="Upload"
+            android:id="@+id/uploadPdfButton"
+            android:textSize="16sp"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"
-            android:layout_height="400dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/previewImage"
-                android:scaleType="centerCrop"/>
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_height="400dp"/>
 
     </LinearLayout>
 

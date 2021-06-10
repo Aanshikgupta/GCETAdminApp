@@ -117,7 +117,10 @@ public class UploadEbook extends AppCompatActivity implements View.OnClickListen
     }
 
     private void addDataToDb(String key) {
-        Ebook ebook=new Ebook(key,pdfUrl,pdfTitle.getText().toString());
+        String title=pdfTitle.getText().toString();
+        if(title==null)
+            title="";
+        Ebook ebook=new Ebook(key,pdfUrl,title);
         databaseReference.child(key).setValue(ebook).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

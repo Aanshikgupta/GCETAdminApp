@@ -11,49 +11,59 @@
         android:weightSum="2">
 
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1.6"
-            android:weightSum="3"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <TextView
-                android:layout_weight="1"
                 android:id="@+id/facultyItemName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="3dp"
-                android:padding="1dp"
                 android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:padding="1dp"
                 android:text="Faculty Name"
                 android:textColor="@color/textColor"
                 android:textSize="18sp" />
 
             <TextView
-                android:layout_weight="1"
                 android:id="@+id/facultyItemPost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="3dp"
-               android:layout_marginBottom="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
                 android:padding="1dp"
                 android:text="Faculty Post"
                 android:textColor="@color/textColor"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/facultyItemEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="3dp"
                 android:layout_marginVertical="1dp"
+                android:layout_weight="1"
                 android:ellipsize="start"
                 android:padding="1dp"
-                android:layout_weight="1"
-                android:id="@+id/facultyItemEmail"
                 android:text="Faculty Email"
                 android:textColor="@color/textColor"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/updateFacultyItem"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Update Info"
+                android:textAllCaps="false"
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <ImageView

@@ -94,7 +94,15 @@ public class AddFaculty extends AppCompatActivity implements View.OnClickListene
                 selectImage();
                 break;
             case R.id.addFacultyButton:
+                String key=databaseReference.push().getKey();
+                String facultyDepartment=facultyDepartmentSpinner.getSelectedItem().toString();
+                if(imageUri!=null)
                 uploadFacultyData();
+                else {
+                    pd.setMessage("Uploading...");
+                    pd.show();
+                    addDatatoDB(key, facultyDepartment);
+                }
                 break;
         }
 

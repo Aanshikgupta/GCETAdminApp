@@ -1,7 +1,9 @@
 package com.example.adminapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +17,13 @@ import com.bumptech.glide.Glide;
 import com.example.adminapp.HandleClickInterface.OnItemClickListener;
 import com.example.adminapp.Models.Faculty;
 import com.example.adminapp.R;
+import com.example.adminapp.UploadClasses.FacultyRelatedActivities.UpdateFaculty;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyViewHolder> {
 
@@ -55,17 +60,25 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
             holder.facultyEmail.setText(faculty.getFacultyEmail());
             holder.facultyPost.setText(faculty.getFacultyPost());
             String url=faculty.getImageUrl();
-            if(url!=null || url.length()!=0)
+            Log.i("TAG",faculty.getFacultyDepartment()+"--->"+url.equalsIgnoreCase(""));
+            if(!(url.equalsIgnoreCase("")))
             Glide.with(context).load(faculty.getImageUrl()).into(holder.facultyImage);
-            else
-                Glide.with(context).load(R.drawable.profile).into(holder.facultyImage);
             holder.updateFacultyItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.onClick(position);
+
+                    Intent intent=new Intent(context, UpdateFaculty.class);
+                    intent.putExtra("FacultyName",faculty.getFacultyName());
+                    intent.putExtra("FacultyEmail",faculty.getFacultyEmail());
+                    intent.putExtra("FacultyPost",faculty.getFacultyPost());
+                    intent.putExtra("FacultyImageUrl",faculty.getImageUrl());
+                    intent.putExtra("FacultyDepartment",faculty.getFacultyDepartment());
+                    intent.putExtra("Key",faculty.getKey());
+                    context.startActivity(intent);
+
                 }
             });
-//            notifyDataSetChanged();
+
     }
 
     @Override
@@ -76,7 +89,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyV
     public class FacultyViewHolder extends RecyclerView.ViewHolder{
 
         TextView facultyName,facultyEmail,facultyPost,updateFacultyItem;
-        ImageView facultyImage;
+        CircleImageView facultyImage;
         public FacultyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             facultyName=itemView.findViewById(R.id.facultyItemName);

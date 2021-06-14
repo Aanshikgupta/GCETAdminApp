@@ -65,7 +65,7 @@ public class AddFaculty extends AppCompatActivity implements View.OnClickListene
     }
 
     private void setSpinner() {
-        String[] st={"Director","Computer Science","Information Technology","Electrical Engineering","Electrical and Electronics Engineering","Mechanical Engineering","Civil Engineering"};
+        String[] st={"Director","Computer Science","Information Technology","Electrical Engineering","Electrical and Electronics Engineering","Electronic and Communication Engineering","Electronics and Instrumentation Engineering","Mechanical Engineering","Civil Engineering"};
         SpinnerAdapter spinnerAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,st);
         facultyDepartmentSpinner.setAdapter(spinnerAdapter);
     }

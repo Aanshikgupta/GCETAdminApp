@@ -29,9 +29,9 @@ import java.util.List;
 
 public class FacultyMain extends AppCompatActivity implements View.OnClickListener {
     private FloatingActionButton floatingActionButton;
-    private List<Faculty> directorList, csList, itList, eeList, eeeList, ceList, meList;
-    private View directorNoData, csNoData, itNoData, eeNoData, eeeNoData, meNoData, ceNoData;
-    private RecyclerView directorRecyclerView, csRecyclerView, itRecyclerView, eeRecyclerView, eeeRecyclerView, meRecyclerView, ceRecyclerView;
+    private List<Faculty> directorList, csList, eiList,eceList,itList, eeList, eeeList, ceList, meList;
+    private View directorNoData,eceNoData,eiNoData, csNoData, itNoData, eeNoData, eeeNoData, meNoData, ceNoData;
+    private RecyclerView directorRecyclerView,eceRecyclerView,eiRecyclerView, csRecyclerView, itRecyclerView, eeRecyclerView, eeeRecyclerView, meRecyclerView, ceRecyclerView;
     private FacultyAdapter facultyAdapter;
     private DatabaseReference databaseReference, tempRef;
 
@@ -47,6 +47,8 @@ public class FacultyMain extends AppCompatActivity implements View.OnClickListen
         setIT();
         setEE();
         setEEE();
+        setECE();
+        setEI();
         setME();
         setCE();
     }
@@ -131,6 +133,69 @@ public class FacultyMain extends AppCompatActivity implements View.OnClickListen
                     eeeRecyclerView.setAdapter(facultyAdapter);
                     eeeRecyclerView.setVisibility(View.VISIBLE);
                     eeeNoData.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(FacultyMain.this, "Something went wrong, try again!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void setECE() {
+
+        eceRecyclerView.setHasFixedSize(true);
+        eceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        tempRef = databaseReference.child("Electrical and Electronics Engineering");
+        tempRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                eceList = new ArrayList<>();
+                if (!snapshot.exists()) {
+                    eceNoData.setVisibility(View.VISIBLE);
+                    eceRecyclerView.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        eceList.add(dataSnapshot.getValue(Faculty.class));
+                    }
+                    facultyAdapter = new FacultyAdapter(FacultyMain.this, eeeList);
+                    eceRecyclerView.setAdapter(facultyAdapter);
+                    eceRecyclerView.setVisibility(View.VISIBLE);
+                    eceNoData.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(FacultyMain.this, "Something went wrong, try again!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+
+    private void setEI() {
+
+        eiRecyclerView.setHasFixedSize(true);
+        eiRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        tempRef = databaseReference.child("Electronics and Instrumentation Engineering");
+        tempRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                eiList = new ArrayList<>();
+                if (!snapshot.exists()) {
+                    eiNoData.setVisibility(View.VISIBLE);
+                    eiRecyclerView.setVisibility(View.GONE);
+                } else {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        eiList.add(dataSnapshot.getValue(Faculty.class));
+                    }
+                    facultyAdapter = new FacultyAdapter(FacultyMain.this, eiList);
+                    eiRecyclerView.setAdapter(facultyAdapter);
+                    eiRecyclerView.setVisibility(View.VISIBLE);
+                    eiNoData.setVisibility(View.GONE);
                 }
             }
 
@@ -287,6 +352,8 @@ public class FacultyMain extends AppCompatActivity implements View.OnClickListen
         eeNoData = findViewById(R.id.EENoData);
         ceNoData = findViewById(R.id.CENoData);
         meNoData = findViewById(R.id.MENoData);
+        eceNoData=findViewById(R.id.ECENoData);
+        eiNoData=findViewById(R.id.EINoData);
 
         //setView recycler views
         directorRecyclerView = findViewById(R.id.directorRecyclerView);
@@ -296,6 +363,8 @@ public class FacultyMain extends AppCompatActivity implements View.OnClickListen
         eeeRecyclerView = findViewById(R.id.EEERecyclerView);
         ceRecyclerView = findViewById(R.id.CERecyclerView);
         meRecyclerView = findViewById(R.id.MERecyclerView);
+        eceRecyclerView=findViewById(R.id.ECERecyclerView);
+        eiRecyclerView=findViewById(R.id.EIRecyclerView);
 
     }
 

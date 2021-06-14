@@ -11,10 +11,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.storage.StorageManager;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +60,7 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     private StorageReference storageReference;
     private String downloadUrl="";
     private ProgressDialog pd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,13 +106,16 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     }
 
     private void uploadData() {
-        if(selectedImageUri==null){
-            Toast.makeText(UploadNotice.this,"Please select an image!",Toast.LENGTH_LONG).show();
-            return;
-        }
+        String key=databaseReference.push().getKey();
         pd.setMessage("Uploading...");
         pd.show();
-        String key=databaseReference.push().getKey();
+        if(IVPreviewImage==null || selectedImageUri==null){
+//            Toast.makeText(UploadNotice.this,"Please select an image!",Toast.LENGTH_LONG).show();
+
+            uploadToDB("",key);
+            return;
+        }
+
 
         storageReference.child(key).putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -132,8 +138,9 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
     }
 
     private void uploadToDB(String imgUrl, String key) {
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault()).format(new Date());
+        Log.i("DATE",currentDate);
+        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         Notice notice=new Notice(noticeTitle.getText().toString(),imgUrl,currentDate,currentTime,key);
         databaseReference.child(key).setValue(notice).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -163,6 +170,7 @@ public class UploadNotice extends AppCompatActivity implements View.OnClickListe
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
                 selectedImageUri = data.getData();
+
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
